@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %} Stats {% endblock %}
+
+{% block content %}
+    <h1>Результаты опроса</h1>
+    <br>
+    <h3>Столько пользователей прошли опрос: {{ all_info['n_users'] }} </h3>
+    <br>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Средний возрастпрошедших опрос
+        <span class="badge badge-primary badge-pill">{{ all_info['age_mean'] }}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Минимальный возраст
+        <span class="badge badge-primary badge-pill">{{ all_info['age_min'] }}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Максимальный возраст
+        <span class="badge badge-primary badge-pill">{{ all_info['age_max'] }}</span>
+      </li>
+    </ul>
+    <br>
+
+    <h3>Какие песни оказались самыми популярными? (в процентах) </h3>
+    <br>
+    <ul class="list-group">
+        {% for song in all_info['rating'] %}
+            <li class="list-group-item">{{ song[1] }}.......{{ song[2] * 100 / all_info['n_users']}}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <h3>Как часто мы слушаем эти песни? (в процентах) </h3>
+    <br>
+    <ul class="list-group">
+        {% for song in all_info['freq'] %}
+            <li class="list-group-item">{{ song[1] }}.......{{ song[2] * 100 / all_info['n_users']}}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <h3>Другие предложенные песни: </h3>
+    <br>
+    <ul class="list-group">
+        {% for song in all_info['recs'] %}
+            <li >"{{ song[2].split(',')[0] }}", {{ song[2].split(',')[1] }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

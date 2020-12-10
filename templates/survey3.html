@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} Survey {% endblock %}
+
+{% block content %}
+    <h1>Добро пожаловать на страницу анкеты о ваших guilty pleasures!</h1>
+    <br>
+    <br>
+    <form action="/process" method = "get">
+        <h3>Для статистики нам нужны некоторые ваши данные:</h3>
+        <h4>Ваша гендерная идентичность:</h4>
+        <input type="radio" name="gender" value="f"> женская<br>
+        <input type="radio" name="gender" value="m"> мужская<br>
+        <input type="radio" name="gender" value="other"> другое<br>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Ваш возраст</span>
+          </div>
+          <input type="text" name="age" class="form-control">
+        </div>
+
+        <p>Ниже вам будут предложены несколько вопросов о guilty pleasure музыке. Ответьте на них, а затем посмотрите, насколько популярны ваши тайные вкусы.</p>
+        <h2>1. Музыка</h2>
+        <p>Примеры выбраны из плейлиста: <a class="btn btn-outline-primary" href="https://open.spotify.com/playlist/37i9dQZF1DX4pUKG1kS0Ac" role="button" target="_blank">Открыть в Spotify</a></p>
+
+        <p>a) Выберите из предложенных ваши guilty pleasure песни:</p>
+        <input type="checkbox" name="songs" value = '"Baby", Justin Bieber'> "Baby", Justin Bieber<br>
+        <input type="checkbox" name="songs" value='"What Makes You Beautiful", One Direction'> "What Makes You Beautiful", One Direction<br>
+        <input type="checkbox" name="songs" value='"Toxic", Britney Spears' > "Toxic", Britney Spears<br>
+        <input type="checkbox" name="songs" value='"Never Gonna Give You Up", Rick Astley'> "Never Gonna Give You Up", Rick Astley<br>
+        <input type="checkbox" name="songs" value='"I Want It That Way", Backstreet Boys'> "I Want It That Way", Backstreet Boys<br>
+        <br>
+
+        <p>b)Как часто, вы бы сказали, вы их слушаете?</p>
+        <input type="radio" name="songs_freq" value="Никогда"> Никогда<br>
+        <input type="radio" name="songs_freq" value="Редко"> Редко<br>
+        <input type="radio" name="songs_freq" value="Иногда"> Иногда<br>
+        <input type="radio" name="songs_freq" value="Часто"> Часто<br>
+        <input type="radio" name="songs_freq" value="Всегда" checked> Постоянно<br>
+        <br>
+
+        <p>c)Предложите свою guilty pleasure песню:</p>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Название и исполнитель</span>
+          </div>
+          <input type="text" name="song_title" class="form-control" placeholder="Baby">
+          <input type="text" name="song_artist" class="form-control" placeholder="Justin Bieber">
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Отправить</button>
+    </form>
+{% endblock %}
